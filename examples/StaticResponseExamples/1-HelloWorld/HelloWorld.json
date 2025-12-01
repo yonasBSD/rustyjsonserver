@@ -1,0 +1,19 @@
+{
+  "port": 8080,
+  "resources": [
+    {
+      "path": "hello",
+      "methods": [
+        {
+          "method": "GET",
+          "response": {
+            "status": 200,
+            "body": {
+              "message": "Hello, World!"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

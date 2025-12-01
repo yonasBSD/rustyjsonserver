@@ -1,0 +1,5 @@
+if(toType(req.params.userId) == Undefined) {
+    return 400, "Bad Request: 'userId' field is required.";
+}
+
+return 200, "Updating user with ID " + req.params.userId + ".";

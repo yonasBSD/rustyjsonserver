@@ -1,0 +1,35 @@
+{
+    "methods": [
+        {
+            "method": "GET",
+            "script": {
+                "fref": "GetTodos.rjscript"
+            }
+        },
+        {
+            "method": "POST",
+            "script": {
+                "fref": "CreateTodo.rjscript"
+            }
+        }
+    ],
+    "children": [
+        {
+            "path": "/:id",
+            "methods": [
+                {
+                    "method": "PUT",
+                    "script": {
+                        "fref": "UpdateTodo.rjscript"
+                    }
+                },
+                {
+                    "method": "DELETE",
+                    "script": {
+                        "fref": "DeleteTodo.rjscript"
+                    }
+                }
+            ]
+        }
+    ]
+}

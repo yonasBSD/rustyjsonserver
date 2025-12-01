@@ -1,0 +1,15 @@
+{
+    "port": 8080,
+    "resources": [
+        {
+            "path": "/api",
+            "children" : [
+                {
+                    "path": "/todos",
+                    "fref": "Todos.json"
+                }
+            ]
+            
+        }
+    ]
+}

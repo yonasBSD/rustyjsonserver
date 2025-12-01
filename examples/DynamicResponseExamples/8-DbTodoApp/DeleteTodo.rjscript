@@ -1,0 +1,7 @@
+if (toType(req.params.id) != str) {
+    return 400, {"error": "Invalid ID parameter"};
+}
+
+let id: str = req.params.id;
+dbDeleteById("todos", id);
+return 200, {"msg": "Todo deleted successfully"};

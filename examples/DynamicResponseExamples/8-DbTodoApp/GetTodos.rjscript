@@ -1,0 +1,5 @@
+let response: vec<obj> = dbGetAll("todos");
+
+sleep(2000); // Simulate a delay of 2 seconds
+
+return 200, response;

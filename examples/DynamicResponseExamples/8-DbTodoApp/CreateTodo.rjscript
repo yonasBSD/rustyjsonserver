@@ -1,0 +1,14 @@
+if (toType(req.body.title) != str) {
+    return 400, { msg: "Title must be a string" };
+}
+
+if (toType(req.body.description) != str) {
+    return 400, { msg: "Description must be a string" };
+}
+
+let title: str = req.body.title;
+let description: str = req.body.description;
+
+let id: str = dbCreateEntry("todos", {"title": title, "description": description, "completed": false});
+
+return {"id": id};

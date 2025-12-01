@@ -1,0 +1,19 @@
+{
+    "methods": [
+        {
+            "method": "GET",
+            "response": {
+                "status": 200,
+                "body": {
+                    "message": "Hello World!"
+                }
+            }
+        }
+    ],
+    "children": [
+        {
+            "path": "nested",
+            "fref": "Nested.json"
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+if(toType(req.body.role) != str) {
+    return 400, "Bad Request: 'role' field is required and must be string.";
+}
+
+let role: str = req.body.role;
+
+switch(role) {
+    case "admin":
+        return 200, "Welcome, Admin!";
+    case "user":
+        return 200, "Hello, User!";
+    case "guest":
+        return 200, "Greetings, Guest!";
+    default:
+        return 403, "Forbidden: Unknown role.";
+}

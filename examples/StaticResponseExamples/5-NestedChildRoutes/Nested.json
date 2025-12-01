@@ -1,0 +1,12 @@
+{
+    "methods": [
+        {
+            "method": "GET",
+            "response": {
+                "body": {
+                    "message": "Hello World from nested route!"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,46 @@
+{
+  "port": 8080,
+  "resources": [
+    {
+      "path": "user",
+      "methods": [
+        {
+          "method": "GET",
+          "script": {
+            "fref": "RequestQuery.rjscript"
+          }
+        },
+        {
+          "method": "POST",
+          "script": {
+            "fref": "RequestBody.rjscript"
+          }
+        }
+      ],
+      "children": [
+        {
+          "path": ":userId",
+          "methods": [
+            {
+              "method": "POST",
+              "script": {
+                "fref": "RequestParams.rjscript"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "header",
+      "methods": [
+        {
+          "method": "GET",
+          "script": {
+            "fref": "RequestHeaders.rjscript"
+          }
+        }
+      ]
+    }
+  ]
+}

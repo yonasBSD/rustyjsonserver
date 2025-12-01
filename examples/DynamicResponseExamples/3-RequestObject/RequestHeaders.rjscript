@@ -1,0 +1,5 @@
+if(toType(req.headers["User-Agent"]) == Undefined) {
+    return 400, "Bad Request: 'User-Agent' header is required.";
+}
+
+return 200, "Received User-Agent header: " + req.headers["User-Agent"] + ".";

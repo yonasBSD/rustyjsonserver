@@ -1,0 +1,10 @@
+if(toType(req.body.password) != str) {
+    return 400, "Bad Request: 'password' field is required and must be string.";
+}
+
+let password: str = req.body.password;
+if (password == "secret") {
+    return 200, "Authorized";
+} else {
+    return 401, "Unauthorized";
+}

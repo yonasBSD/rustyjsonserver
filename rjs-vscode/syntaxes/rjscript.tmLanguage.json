@@ -1,0 +1,142 @@
+{
+  "scopeName": "source.rjscript",
+  "name": "rjscript",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#numbers" },
+
+    { "include": "#builtin-method-call" },
+    { "include": "#method-call" },
+    { "include": "#property-access" },
+
+    { "include": "#function-declaration" },
+    { "include": "#keywords" },
+    { "include": "#types" },
+    { "include": "#booleans" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        { "name": "comment.line.double-slash.rjscript", "match": "//.*$" },
+        {
+          "name": "comment.block.rjscript",
+          "begin": "/\\*",
+          "end": "\\*/",
+          "patterns": [{ "include": "#comments" }]
+        }
+      ]
+    },
+
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.rjscript",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [{ "match": "\\\\.", "name": "constant.character.escape.rjscript" }]
+        },
+        { "name": "string.template.backtick.rjscript", "begin": "`", "end": "`" }
+      ]
+    },
+
+    "numbers": {
+      "patterns": [{ "name": "constant.numeric.rjscript", "match": "\\b\\d+(?:\\.\\d+)?\\b" }]
+    },
+
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.rjscript",
+          "match": "\\b(let|return|if|else|for|switch|case|default|func|break|continue|req|body|params|query|headers|undefined)\\b"
+        }
+      ]
+    },
+
+    "types": {
+      "patterns": [
+        {
+          "name": "storage.type.rjscript",
+          "match": "\\b(bool|num|str|vec|obj|any|Undefined)\\b"
+        }
+      ]
+    },
+
+    "booleans": {
+      "patterns": [{ "name": "constant.language.boolean.rjscript", "match": "\\b(true|false)\\b" }]
+    },
+
+
+    "builtin-method-call": {
+      "patterns": [
+        {
+          "name": "support.function.builtin.method.rjscript",
+          "match": "(print|toType)\\b(?=\\s*\\()",
+          "captures": {
+            "1": { "name": "punctuation.accessor.dot.rjscript" },
+            "2": { "name": "support.function.method.rjscript" }
+          }
+        },
+        {
+          "name": "support.function.builtin.method.rjscript",
+          "match": "(\\.)\\s*(push|remove|removeAt|length|includes)\\b(?=\\s*\\()",
+          "captures": {
+            "1": { "name": "punctuation.accessor.dot.rjscript" },
+            "2": { "name": "support.function.method.rjscript" }
+          }
+        }
+      ]
+    },
+
+    "method-call": {
+      "patterns": [
+        {
+          "name": "meta.method-call.rjscript",
+          "match": "(\\.)\\s*([A-Za-z_]\\w*)\\s*(?=\\()",
+          "captures": {
+            "1": { "name": "punctuation.accessor.dot.rjscript" },
+            "2": { "name": "entity.name.function.method.rjscript" }
+          }
+        }
+      ]
+    },
+
+    "property-access": {
+      "patterns": [
+        {
+          "name": "variable.other.property.rjscript",
+          "match": "(\\.)\\s*([A-Za-z_]\\w*)\\b(?!\\s*\\()",
+          "captures": {
+            "1": { "name": "punctuation.accessor.dot.rjscript" },
+            "2": { "name": "variable.other.property.rjscript" }
+          }
+        }
+      ]
+    },
+
+    "function-declaration": {
+      "begin": "\\b(func)\\s+([A-Za-z_]\\w*)\\s*(\\()",
+      "beginCaptures": {
+        "1": { "name": "storage.type.function.rjscript" },
+        "2": { "name": "entity.name.function.rjscript" },
+        "3": { "name": "punctuation.definition.parameters.begin.rjscript" }
+      },
+      "end": "\\)",
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.parameters.end.rjscript" }
+      },
+      "name": "meta.function.rjscript",
+      "patterns": [
+        {
+          "name": "variable.parameter.rjscript",
+          "match": "\\b([A-Za-z_]\\w*)\\b"
+        },
+        {
+          "name": "punctuation.separator.parameter.rjscript",
+          "match": ","
+        },
+        { "include": "#types" }
+      ]
+    }
+  }
+}

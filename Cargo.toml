@@ -1,0 +1,22 @@
+[package]
+name = "rustyjsonserver"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+notify = "8.0.0"
+tokio = { version = "1", features = ["full"] }
+clap = { version = "4.2", features = ["derive"] }
+tracing = "0.1.41"
+tracing-subscriber = { version = "0.3", features = ["fmt", "env-filter"] }
+tower-lsp = "0.20"
+
+[[bin]]
+name = "rjserver"
+path = "src/main.rs"
+
+[[bin]]
+name = "rjs-lsp"
+path = "src/rjs_lsp.rs"

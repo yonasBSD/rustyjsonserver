@@ -1,0 +1,11 @@
+let rangeEnd: num = 10;
+let response: vec<num> = [];
+
+for (let i: num = 1; i <= rangeEnd; i = i + 1) {
+    if (i % 2 == 0) {
+        continue; // Skip even numbers
+    }
+    response.push(i);
+}
+
+return 200, response;

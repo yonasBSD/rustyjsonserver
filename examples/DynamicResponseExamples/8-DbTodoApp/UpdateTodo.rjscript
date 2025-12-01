@@ -1,0 +1,14 @@
+if (toType(req.params.id) != str) {
+    return 400, {"error": "Invalid ID parameter"};
+}
+
+let id: str = req.params.id;
+let todo: obj = dbGetById("todos", id);
+let updatedBool: bool = false;
+
+if (todo.completed == false) {
+    updatedBool = true;
+}
+
+dbUpdateById("todos", id, {"completed": updatedBool});
+return 200, {"msg": "Todo updated successfully"};

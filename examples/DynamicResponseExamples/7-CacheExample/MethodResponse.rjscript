@@ -1,0 +1,14 @@
+if (cacheGet("test") == undefined) {
+    print("cache uninitialised, setting it");
+    cacheSet("test", 0);
+} else if (cacheGet("test") < 3) {
+    print("cache initialised, increasing it");
+    let x: num = cacheGet("test");
+    print(x);
+    cacheSet("test", cacheGet("test") + 1);
+} else {
+    print("cache full, clearing it");
+    cacheClear();
+}
+
+return true;

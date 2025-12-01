@@ -1,0 +1,5 @@
+if(toType(req.query.name) == Undefined) {
+    return 400, "Bad Request: 'password' field is required.";
+}
+
+return 200, "Searching users with the name " + req.query.name + ".";
