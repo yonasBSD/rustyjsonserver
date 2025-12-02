@@ -15,8 +15,8 @@ RUN --mount=type=bind,source=./src,target=/app/src \
     --mount=type=cache,target=/app/target/ \
     --mount=type=cache,target=/usr/local/cargo/git/db \
     --mount=type=cache,target=/usr/local/cargo/registry/ \
-    cargo build --locked --release --bin rustyjsonserver && \
-    cp ./target/release/rustyjsonserver /bin/server
+    cargo build --locked --release --bin rjserver && \
+    cp ./target/release/rjserver /bin/server
 
 # Create a new stage for running the application.
 
@@ -25,17 +25,15 @@ FROM alpine:3.18 AS final
 # Create the directory for the application.
 RUN mkdir -p /app
 
-# Copy the executable and configuration file from the "build" stage.
+# Copy the executable from the "build" stage.
 COPY --from=build /bin/server /bin/
-COPY ./config.json /app/config.json
 
 # Expose the port that the application listens on.
 EXPOSE 8080
 
-# test connectivity with netcat: install and listen on port 5555
-# RUN apk add --no-cache netcat-openbsd
-# CMD ["nc", "-l", "5555"] 
+# Use a bind mount for the configuration file.
+# The config file should be mounted at /app/config.json at runtime.
 
-# run: rjserver serve --config config.json
+# run: rjserver serve --config /app/config.json
 ENTRYPOINT ["/bin/server"]
 CMD ["serve", "--config", "/app/config.json"]
