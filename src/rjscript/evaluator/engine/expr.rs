@@ -223,7 +223,6 @@ impl Expr {
 
             // Property access: obj.prop
             ExprKind::Member { object, property } => {
-                let pos = self.pos();
                 let obj_val = object.eval_expr(ctx, env)?;
                 if let RJSValue::Object(map) = obj_val {
                     Ok(map
@@ -231,10 +230,7 @@ impl Expr {
                         .cloned()
                         .unwrap_or(RJSValue::Undefined))
                 } else {
-                    Err(EvalError::General(
-                        format!("Cannot read property '{}' of non-object value", property),
-                        pos,
-                    ))
+                    Ok(RJSValue::Undefined)
                 }
             }
 
